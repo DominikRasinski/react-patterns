@@ -56,6 +56,8 @@ const Tab = ({ children }) => {
 </Tabs>
 ```
 
+📚 https://www.patterns.dev/react/compound-pattern
+
 ## Instalacja
 
 Zainstalowanie projektu jest trochę wymagające ponieważ Jonas oparł go na tak zwanym "Legacy Code", co niestety jeżeli użyjemy flagi pozwalającego zainstalowanie kodu który został wycofany `sudo npm install --legacy-peer-deps` spowoduje, że nowsza wersja `node.js` wywali błąd.
