@@ -27,7 +27,34 @@ Wzbogacenie komponentu polega na `opakowaniu` komponentu który został przekaza
 
 ## Compound component pattern
 
-Wzorzec to podejście do budowania komponentów, 
+Wzorzec `Compound component` to podejście do budowania komponentów, gdzie kilka powiązanych z sobą komponentów współdzieli z sobą stan i logikę działania.
+
+Często taki komponent opiera się na obsłudze poprzez hook'a `useContext` dzięki czemu mamy możliwość prostego sposobu na udostępnienie wszystkim komponentom w drzewie stanu bez potrzeby przekazywania `props` do poszczególnych komponentów.
+
+Przykład:
+
+```jsx
+const Tabs = ({ children }) => {
+  const [activeTab, setActiveTab] = useState(0);
+  
+  return (
+    <TabsContext.Provider value={{ activeTab, setActiveTab }}>
+      {children}
+    </TabsContext.Provider>
+  );
+};
+
+const Tab = ({ children }) => {
+  const { activeTab } = useContext(TabsContext);
+  
+  return <div>{activeTab === 'tab1' ? children : null}</div>;
+};
+
+<Tabs>
+  <Tab>Zawartość pierwszego zakładki</Tab>
+  <Tab>Druga zakładka</Tab>
+</Tabs>
+```
 
 ## Instalacja
 
